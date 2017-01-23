@@ -14,5 +14,3 @@ const App = () => {
 }
 
 render(<App />, document.querySelector('.application'));
-
-TESTING!!!
