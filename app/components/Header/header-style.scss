@@ -1,6 +1,6 @@
-$main-color: #fff;
+@import url('https://fonts.googleapis.com/css?family=Bungee+Shade');
 
-body {
-  background: green;
-  color: $main-color;
+.Header {
+  font-family: 'Bungee Shade', cursive;
+  font-size: 24px;
 }
