@@ -6,8 +6,12 @@ import FeatureJoke from '../FeatureJoke/FeatureJoke';
 const JokeContainer = (props) => {
   return (
     <div className='body'>
-      <FeatureJoke joke={props.joke} />
-      <JokeCard />
+      <div id='feature-joke-container'>
+        <FeatureJoke joke={props.joke} />
+      </div>
+      <div id='joke-card-container'>
+        <JokeCard />
+      </div>
     </div>
   )
 }
