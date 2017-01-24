@@ -11,7 +11,7 @@ const Header = () => {
   return (
     <div className="Header">
       <h1>CHUCK NORRIS JOKE MACHINE</h1>
-      <Button text="Click me eh" handleClick={() => logStuff()} />
+      <Button id='settings-btn' text="Settings" handleClick={() => logStuff()} />
     </div>
   );
 }
