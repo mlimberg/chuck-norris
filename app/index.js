@@ -8,10 +8,11 @@ import Settings from './components/Settings/Settings';
 import Header from './components/Header/Header';
 
 const router = (
-  <Router history={hashHistory}>
+  <Router history={browserHistory}>
     <Route path='/' component={App}>
       <indexRoute component={JokeContainer} />
       <Route path='/settings' component={Settings} />
+
     </Route>
   </Router>
 )

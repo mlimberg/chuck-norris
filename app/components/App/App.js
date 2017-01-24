@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Header from '../Header/Header';
-import JokeContainer from '../JokeContainer/JokeContainer';
+import FeatureJoke from '../FeatureJoke/FeatureJoke';
 
 export default class App extends Component {
   constructor(props) {
@@ -20,11 +20,15 @@ export default class App extends Component {
   }
 
   render() {
+    const Children = React.cloneElement(this.props.children, {
+      jokes: this.state.jokes
+    });
+
     return (
       <div>
         <Header />
-        <JokeContainer joke={this.state.featureJoke}/>
-        {this.props.children}
+        <FeatureJoke joke={this.state.featureJoke} />
+        {Children}
       </div>
     );
   }

@@ -7,10 +7,9 @@ const JokeContainer = (props) => {
   return (
     <div className='body'>
       <div id='feature-joke-container'>
-        <FeatureJoke joke={props.joke} />
       </div>
       <div id='joke-card-container'>
-        <JokeCard />
+        <JokeCard jokes={props.jokes}/>
       </div>
     </div>
   )
