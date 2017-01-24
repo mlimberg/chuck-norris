@@ -24,6 +24,7 @@ export default class App extends Component {
       <div>
         <Header />
         <JokeContainer joke={this.state.featureJoke}/>
+        {this.props.children}
       </div>
     );
   }

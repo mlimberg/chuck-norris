@@ -1,6 +1,10 @@
-.body {
+body {
   background-color: rgb(29, 53, 63);
-  height: 70vh;
   width: 100%;
-  padding-top: 30vh;
+}
+
+#feature-joke-container {
+  display: block;
+  width: 100%;
+  padding: 10px;
 }
