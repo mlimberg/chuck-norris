@@ -1,19 +1,37 @@
-import React from 'react';
 import './joke-container-style';
+import React, { Component } from 'react';
 import JokeCard from '../JokeCard/JokeCard';
-import FeatureJoke from '../FeatureJoke/FeatureJoke';
+import Button from '../Button/Button';
+import Input from '../Input/Input';
 
-const JokeContainer = (props) => {
-  return (
-    <div className='body'>
-      <div id='feature-joke-container'>
-        <FeatureJoke joke={props.joke} />
+export default class JokeContainer extends Component {
+  constructor() {
+    super();
+    this.state = {
+      jokes: ['funny', 'stuff', 'haha', 'funny', 'stuff', 'haha']
+    }
+  }
+
+  componentDidMount() {
+    // fetch()
+  }
+
+  render() {
+    let jokes = this.state.jokes.map(joke => <JokeCard key={Math.random()} joke={joke} />)
+
+    return (
+      <div>
+        <div id='joke-controls'>
+          <div id='new-joke-generator'>
+            <Button text='New Jokes'/>
+            <Input />
+          </div>
+            <Button id='faves-btn' text='Favorites'/>
+        </div>
+        <div id='joke-card-container'>
+          {jokes}
+        </div>
       </div>
-      <div id='joke-card-container'>
-        <JokeCard />
-      </div>
-    </div>
-  )
+    )
+  }
 }
-
-export default JokeContainer;

@@ -1,17 +1,18 @@
 import './reset'
 import React from 'react';
 import { render } from 'react-dom';
-import {Router, Route, Link, browserHistory, indexRoute, hashHistory } from 'react-router'
+import {Router, Route, Link, browserHistory, IndexRoute, hashHistory } from 'react-router'
 import JokeContainer from './components/JokeContainer/JokeContainer';
 import App from './components/App/App';
 import Settings from './components/Settings/Settings';
 import Header from './components/Header/Header';
 
 const router = (
-  <Router history={hashHistory}>
+  <Router history={browserHistory}>
     <Route path='/' component={App}>
-      <indexRoute component={JokeContainer} />
+      <IndexRoute  component={JokeContainer} />
       <Route path='/settings' component={Settings} />
+      {/* <Route path='/jokes' component={JokeContainer} /> */}
     </Route>
   </Router>
 )
