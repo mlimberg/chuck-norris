@@ -12,9 +12,15 @@ export default class JokeContainer extends Component {
     }
   }
 
-  componentDidMount() {
+  componentWillUpdate() {
     // fetch()
   }
+
+  fetchNewJokes() {
+    console.log('fetch')
+  }
+
+
 
   render() {
     let jokes = this.state.jokes.map(joke => <JokeCard key={Math.random()} joke={joke} />)
@@ -23,7 +29,8 @@ export default class JokeContainer extends Component {
       <div>
         <div id='joke-controls'>
           <div id='new-joke-generator'>
-            <Button text='New Jokes'/>
+            <Button text='New Jokes'
+                    handleClick={this.fetchNewJokes.bind(this)}/>
             <Input />
           </div>
             <Button id='faves-btn' text='Favorites'/>
