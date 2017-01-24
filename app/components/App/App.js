@@ -23,7 +23,7 @@ export default class App extends Component {
     return (
       <div>
         <Header />
-        <JokeContainer joke={this.state.featureJoke}/>
+        {/* <JokeContainer joke={this.state.featureJoke}/> */}
         {this.props.children}
       </div>
     );

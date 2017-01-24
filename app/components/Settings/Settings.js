@@ -1,4 +1,4 @@
-// import './settings-style';
+import './setting-style.scss';
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import Button from '../Button/Button';

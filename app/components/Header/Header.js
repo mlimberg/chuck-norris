@@ -1,23 +1,31 @@
 import './header-style';
-import React from 'react';
+import React, { Component } from 'react';
 import Button from '../Button/Button';
 import { Link } from 'react-router';
 
-const logStuff = () => {
-  console.log('clicked!');
-}
+export default class Header extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      settings: false
+    }
+  }
 
-const Header = () => {
-  return (
-    <div className="Header">
-      <h1>CHUCK NORRIS JOKE MACHINE</h1>
+  render() {
+    return (
+      <div className="Header">
 
+        <h1 id='main-h1'>CHUCK NORRIS JOKE MACHINE</h1>
 
-      <Link to='/settings'>
-        <Button id='settings-btn' text="Settings" handleClick={() => logStuff()} />
-      </Link>
+        <Link to='/settings'>
+          <Button className='button'
+                  id='settings-btn'
+                  text={this.state.settings ? 'Jokes' : 'Settings'}
+                  handleClick={() => this.setState({ settings: !this.state.settings })}
+                  />
+        </Link>
+
     </div>
   );
+  }
 }
-
-export default Header;
