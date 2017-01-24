@@ -1,4 +1,15 @@
 #settings-container {
   background-color: rgba(0,0,0,0.2);
+  width: 100%;
   color: white;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#name-set-controls, #parental-controls {
+  display: flex;
+  flex-direction: row;
 }

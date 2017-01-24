@@ -6,6 +6,7 @@ const Input = (props) => {
     <input id={props.id}
            className='input'
            value={props.value}
+           type={props.type}
            onChange={(e) => props.handleChange(e)} />
   )
 }
