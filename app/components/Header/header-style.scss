@@ -1,6 +1,20 @@
-$main-color: #fff;
+@import url('https://fonts.googleapis.com/css?family=Bungee+Shade');
 
-body {
-  background: green;
-  color: $main-color;
+.Header {
+  background-color: rgba(255, 255, 255, 0.3);
+  font-family: 'Bungee Shade', cursive;
+  font-size: 25px;
+  height: 30vh;
+  width: 100%;
+  color: white;
+  position: fixed;
+}
+
+#settings-btn {
+  border-radius: 50%;
+  height: 60px;
+  width: 60px;
+  position: absolute;
+  top: 20px;
+  right: 20px;
 }
