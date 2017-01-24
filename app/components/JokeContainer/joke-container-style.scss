@@ -25,7 +25,8 @@ body {
 
 #joke-card-container {
   display: flex;
-  flex-flow: row-wrap;
+  flex-flow: wrap;
   justify-content: space-around;
-  flex-grow: 2
+  flex-grow: 2;
+  // min-width: 30%;
 }

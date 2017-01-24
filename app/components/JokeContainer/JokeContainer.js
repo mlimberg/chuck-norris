@@ -8,7 +8,7 @@ export default class JokeContainer extends Component {
   constructor() {
     super();
     this.state = {
-      jokes: ['funny', 'stuff', 'haha', 'funny', 'stuff', 'haha']
+      jokes: ['funny', 'stuff', 'haha', 'funny', 'stuff']
     }
   }
 
