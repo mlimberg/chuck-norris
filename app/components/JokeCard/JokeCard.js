@@ -1,10 +1,11 @@
 import React from 'react';
 import './joke-card-style';
 
-const JokeCard = () => {
+const JokeCard = (props) => {
   return (
     <div className='joke-card'>
-      Joke Card!
+      {props.joke}
+      <button>Fave!</button>
     </div>
   )
 }

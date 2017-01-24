@@ -20,15 +20,15 @@ export default class App extends Component {
   }
 
   render() {
-    const Children = React.cloneElement(this.props.children, {
-      jokes: this.state.jokes
-    });
+    // const Children = React.cloneElement(this.props.children, {
+    //   jokes: this.state.jokes
+    // });
 
     return (
       <div>
         <Header />
         <FeatureJoke joke={this.state.featureJoke} />
-        {Children}
+        {this.props.children}
       </div>
     );
   }
