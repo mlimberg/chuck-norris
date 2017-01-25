@@ -8,8 +8,9 @@ export default class JokeContainer extends Component {
   constructor() {
     super();
     this.state = {
-      num: 0,
-      jokes: []
+      num: '',
+      jokes: [],
+      showFaves: false
     }
   }
 
@@ -19,7 +20,7 @@ export default class JokeContainer extends Component {
     }).then((data) => {
       return data.value.map(obj => obj.joke)
     }).then(array => {
-      this.setState({ jokes: array })
+      this.setState({ jokes: array, num: '' })
     })
   }
 
@@ -35,12 +36,16 @@ export default class JokeContainer extends Component {
           <div id='new-joke-generator'>
             <Button id='new-joke-btn'
                     text='New Jokes'
+                    disabled={!this.state.num}
                     handleClick={this.fetchNewJokes.bind(this)}/>
             <Input id='joke-num-input'
                    type='numberg'
+                   value={this.state.num}
                    handleChange={(e) => this.setState({ num: e.target.value })}/>
           </div>
-            <Button id='faves-btn' text='Favorites'/>
+            <Button id='faves-btn'
+                    text='Favorites'
+                    disabled={!this.state.showFaves}/>
         </div>
         <div id='joke-card-container'>
           {jokes}

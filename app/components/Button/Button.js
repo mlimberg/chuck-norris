@@ -5,6 +5,7 @@ const Button = (props) => {
   return (
     <button id={props.id}
             className='button'
+            disabled={props.disabled}
             onClick={() => props.handleClick()}>
       {props.text}
     </button>
