@@ -17,7 +17,11 @@ export default class JokeContainer extends Component {
     let welcomeMessage = (<div id='welcome-msg'>Click Get Jokes!</div>)
 
     let jokes = this.props.jokes.length > 0 ? this.props.jokes.map((e, i) => {
-      return <JokeCard key={i} id={e.id} joke={e.joke} />
+      return (
+        <div id='joke-card-container' key={i}>
+          <JokeCard id={e.id} joke={e.joke} updateFave={this.props.updateFave}/>  
+        </div>
+      )
     }) : welcomeMessage
 
     return (
@@ -40,9 +44,7 @@ export default class JokeContainer extends Component {
                     text='Favorites'
                     disabled={!this.state.showFaves}/>
         </div>
-        <div id='joke-card-container'>
           {jokes}
-        </div>
       </div>
     )
   }
