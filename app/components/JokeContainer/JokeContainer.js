@@ -5,30 +5,17 @@ import Button from '../Button/Button';
 import Input from '../Input/Input';
 
 export default class JokeContainer extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       num: '',
-      jokes: [],
       showFaves: false
     }
   }
 
-  fetchNewJokes() {
-    fetch(`http://api.icndb.com/jokes/random/${this.state.num}?escape=javascript`).then((response) => {
-      return response.json()
-    }).then((data) => {
-      return data.value.map(obj => obj.joke)
-    }).then(array => {
-      this.setState({ jokes: array, num: '' })
-    })
-  }
-
   render() {
-    let welcomeMessage = (
-      <div id='welcome-msg'>Click Get Jokes!</div>
-    )
-    let jokes = this.state.jokes.length > 0 ? this.state.jokes.map(joke => <JokeCard key={Math.random()} joke={joke} />) : welcomeMessage
+    let welcomeMessage = (<div id='welcome-msg'>Click Get Jokes!</div>)
+    let jokes = this.props.jokes.length > 0 ? this.props.jokes.map((joke, i) => <JokeCard key={i} joke={joke} />) : welcomeMessage
 
     return (
       <div>
@@ -37,7 +24,10 @@ export default class JokeContainer extends Component {
             <Button id='new-joke-btn'
                     text='New Jokes'
                     disabled={!this.state.num}
-                    handleClick={this.fetchNewJokes.bind(this)}/>
+                    handleClick={() => {
+                      this.props.getJokes(this.state.num);
+                      this.setState({ num: '' })
+                    }}/>
             <Input id='joke-num-input'
                    type='numberg'
                    value={this.state.num}

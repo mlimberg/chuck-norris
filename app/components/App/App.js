@@ -7,7 +7,7 @@ export default class App extends Component {
     super(props);
     this.state = {
       featureJoke: '',
-      jokeArray: [],
+      jokes: [],
     }
   }
 
@@ -19,13 +19,29 @@ export default class App extends Component {
     })
   }
 
+  fetchJokes(num) {
+    let that = this;
+    fetch(`http://api.icndb.com/jokes/random/${num}?escape=javascript`).then((response) => {
+      return response.json()
+    }).then((data) => {
+      return data.value.map(obj => obj.joke)
+    }).then(array => {
+      that.setState({ jokes: array })
+    })
+  }
+
   render() {
+    const Children = React.cloneElement(this.props.children, {
+      getJokes: this.fetchJokes.bind(this),
+      num: this.setNum,
+      jokes: this.state.jokes
+    })
 
     return (
       <div>
         <Header />
         <FeatureJoke joke={this.state.featureJoke} />
-        {this.props.children}
+        {Children}
       </div>
     );
   }
