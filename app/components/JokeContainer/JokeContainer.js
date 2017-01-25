@@ -36,7 +36,7 @@ export default class JokeContainer extends Component {
                       this.setState({ num: '' })
                     }}/>
             <Input id='joke-num-input'
-                   type='numberg'
+                   type='number'
                    value={this.state.num}
                    handleChange={(e) => this.setState({ num: e.target.value })}/>
           </div>
