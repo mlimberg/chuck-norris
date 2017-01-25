@@ -8,30 +8,37 @@ export default class JokeContainer extends Component {
   constructor() {
     super();
     this.state = {
-      jokes: ['funny', 'stuff', 'haha', 'funny', 'stuff']
+      num: 0,
+      jokes: []
     }
   }
 
-  componentWillUpdate() {
-    // fetch()
-  }
-
   fetchNewJokes() {
-    console.log('fetch')
+    fetch(`http://api.icndb.com/jokes/random/${this.state.num}?escape=javascript`).then((response) => {
+      return response.json()
+    }).then((data) => {
+      return data.value.map(obj => obj.joke)
+    }).then(array => {
+      this.setState({ jokes: array })
+    })
   }
-
-
 
   render() {
-    let jokes = this.state.jokes.map(joke => <JokeCard key={Math.random()} joke={joke} />)
+    let welcomeMessage = (
+      <div id='welcome-msg'>Click Get Jokes!</div>
+    )
+    let jokes = this.state.jokes.length > 0 ? this.state.jokes.map(joke => <JokeCard key={Math.random()} joke={joke} />) : welcomeMessage
 
     return (
       <div>
         <div id='joke-controls'>
           <div id='new-joke-generator'>
-            <Button text='New Jokes'
+            <Button id='new-joke-btn'
+                    text='New Jokes'
                     handleClick={this.fetchNewJokes.bind(this)}/>
-            <Input />
+            <Input id='joke-num-input'
+                   type='numberg'
+                   handleChange={(e) => this.setState({ num: e.target.value })}/>
           </div>
             <Button id='faves-btn' text='Favorites'/>
         </div>
