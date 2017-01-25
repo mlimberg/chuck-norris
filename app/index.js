@@ -12,7 +12,7 @@ const router = (
     <Route path='/' component={App}>
       <IndexRoute  component={JokeContainer} />
       <Route path='/settings' component={Settings} />
-      {/* <Route path='/jokes' component={JokeContainer} /> */}
+      <Route path='/jokes' component={JokeContainer} />
     </Route>
   </Router>
 )
