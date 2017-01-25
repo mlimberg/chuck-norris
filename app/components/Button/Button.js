@@ -12,4 +12,10 @@ const Button = (props) => {
   );
 }
 
+Button.propTypes = {
+  id: React.PropTypes.string,
+  disabled: React.PropTypes.bool,
+  handleClick: React.PropTypes.func
+}
+
 export default Button;

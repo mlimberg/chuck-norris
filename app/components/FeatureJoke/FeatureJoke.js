@@ -9,4 +9,8 @@ const FeatureJoke = (props) => {
   )
 }
 
+FeatureJoke.propTypes = {
+  joke: React.PropTypes.string
+}
+
 export default FeatureJoke;

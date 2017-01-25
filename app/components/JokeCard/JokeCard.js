@@ -10,4 +10,8 @@ const JokeCard = (props) => {
   )
 }
 
+JokeCard.propTypes = {
+  joke: React.PropTypes.string
+}
+
 export default JokeCard;
