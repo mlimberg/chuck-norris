@@ -5,10 +5,17 @@ const Button = (props) => {
   return (
     <button id={props.id}
             className='button'
+            disabled={props.disabled}
             onClick={() => props.handleClick()}>
       {props.text}
     </button>
   );
+}
+
+Button.propTypes = {
+  id: React.PropTypes.string,
+  disabled: React.PropTypes.bool,
+  handleClick: React.PropTypes.func
 }
 
 export default Button;

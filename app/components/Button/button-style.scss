@@ -1,5 +1,7 @@
+$button-background: rgb(192, 192, 192);
+
 .button {
-  background-color: rgb(192, 192, 192);
+  background-color: $button-background;
   border: none;
   outline: none;
   border-radius: 5px;
@@ -10,6 +12,8 @@
     background-color: rgb(255, 255, 255);
   }
   &:disabled {
-    background: gray;
+    color: gray;
+    cursor: default;
+    background-color: $button-background;
   }
 }
