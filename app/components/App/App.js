@@ -39,8 +39,16 @@ export default class App extends Component {
     this.setState({ jokes: updatedJokes })
   }
 
-  showFaves() {
-    this.setState({ showFaves: !this.state.showFaves })
+  showFaves(faveStatus) {
+    this.setState({ showFaves: faveStatus })
+  }
+
+  filterFaves() {
+    return this.state.jokes.filter(joke => {
+      if(joke.fave) {
+        return joke
+      }
+    })
   }
 
   render() {
@@ -48,7 +56,7 @@ export default class App extends Component {
     const Children = React.cloneElement(this.props.children, {
       getJokes: this.fetchJokes.bind(this),
       num: this.setNum,
-      jokes: this.state.jokes,
+      jokes: this.state.showFaves ? this.filterFaves() : this.state.jokes,
       updateFave: this.updateJoke.bind(this),
       showFaves: this.showFaves.bind(this)
     })

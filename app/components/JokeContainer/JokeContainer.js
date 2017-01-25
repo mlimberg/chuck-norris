@@ -41,9 +41,13 @@ export default class JokeContainer extends Component {
                    handleChange={(e) => this.setState({ num: e.target.value })}/>
           </div>
             <Button id='faves-btn'
-                    text='Favorites'
-                    // disabled={!this.state.showFaves}
-                    handleClick={() => this.props.showFaves()}/>
+                    text={this.state.showFaves ? 'All' : 'Favorites'}
+                    // disabled={this.state.showFaves}
+                    handleClick={() => {
+                      this.setState({ showFaves: !this.state.showFaves }, () => {
+                        this.props.showFaves(this.state.showFaves)
+                      })
+                    }}/>
         </div>
           {jokes}
       </div>
