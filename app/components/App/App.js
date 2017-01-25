@@ -29,7 +29,13 @@ export default class App extends Component {
   }
 
   updateJoke(id) {
-    console.log(id)
+    let updatedJokes = this.state.jokes.map(joke => {
+      if(joke.id === id) {
+        joke.fave = !joke.fave
+      }
+      return joke
+    })
+    this.setState({ jokes: updatedJokes })
   }
 
   render() {
@@ -38,7 +44,7 @@ export default class App extends Component {
       getJokes: this.fetchJokes.bind(this),
       num: this.setNum,
       jokes: this.state.jokes,
-      updateFave: this.updateJoke
+      updateFave: this.updateJoke.bind(this)
     })
 
     return (
