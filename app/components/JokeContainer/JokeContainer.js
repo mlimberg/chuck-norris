@@ -15,7 +15,10 @@ export default class JokeContainer extends Component {
 
   render() {
     let welcomeMessage = (<div id='welcome-msg'>Click Get Jokes!</div>)
-    let jokes = this.props.jokes.length > 0 ? this.props.jokes.map((joke, i) => <JokeCard key={i} joke={joke} />) : welcomeMessage
+
+    let jokes = this.props.jokes.length > 0 ? this.props.jokes.map((e, i) => {
+      return <JokeCard key={i} id={e.id} joke={e.joke} />
+    }) : welcomeMessage
 
     return (
       <div>

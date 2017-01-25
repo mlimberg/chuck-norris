@@ -23,9 +23,7 @@ export default class App extends Component {
     fetch(`http://api.icndb.com/jokes/random/${num}?escape=javascript`).then((response) => {
       return response.json()
     }).then((data) => {
-      return data.value.map(obj => obj.joke)
-    }).then(array => {
-      this.setState({ jokes: array })
+      this.setState({ jokes: data.value })
     })
   }
 
