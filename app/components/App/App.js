@@ -8,6 +8,7 @@ export default class App extends Component {
     this.state = {
       featureJoke: '',
       jokes: [],
+      showFaves: false
     }
   }
 
@@ -38,13 +39,18 @@ export default class App extends Component {
     this.setState({ jokes: updatedJokes })
   }
 
+  showFaves() {
+    this.setState({ showFaves: !this.state.showFaves })
+  }
+
   render() {
 
     const Children = React.cloneElement(this.props.children, {
       getJokes: this.fetchJokes.bind(this),
       num: this.setNum,
       jokes: this.state.jokes,
-      updateFave: this.updateJoke.bind(this)
+      updateFave: this.updateJoke.bind(this),
+      showFaves: this.showFaves.bind(this)
     })
 
     return (
