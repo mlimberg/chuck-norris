@@ -11,11 +11,6 @@ const JokeCard = (props) => {
                 id={props.id} text='★'
                 handleClick={() => {
                   props.updateFave(props.id)
-                  if(!props.fave) { 
-                    props.addToFaves(props)
-                  } else {
-                    props.removeFromFaves(props.id)
-                  }
                 }} />
     </div>
   )
