@@ -1,0 +1,49 @@
+body {
+  background-color: rgb(29, 53, 63);
+  width: 100%;
+}
+
+a:hover, a:visited, a:link, a:active {
+  text-decoration: none;
+}
+
+#joke-controls {
+  display: flex;
+  width: 30%;
+  // height: 200px;
+  margin: auto;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+#new-joke-generator {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+#faves-btn {
+  display: block;
+  width: 100px;
+}
+
+#joke-card-container {
+  display: flex;
+  flex-flow: wrap;
+  justify-content: space-around;
+  flex-grow: 2;
+}
+
+#new-joke-btn {
+  width: 150px;
+}
+
+#faves-btn {
+  width: 70px;
+}
+
+#joke-num-input {
+  width: 20px;
+  border-radius: 5px;
+}

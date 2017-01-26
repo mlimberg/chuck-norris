@@ -9,7 +9,6 @@ export default class App extends Component {
       featureJoke: '',
       jokes: [],
       favorites: [],
-      showFaves: false,
       firstName: 'Chuck',
       lastName: 'Norris'
     }
@@ -49,16 +48,20 @@ export default class App extends Component {
   updateJoke(id) {
   let updatedJokes = this.state.jokes.map(joke => {
     if(joke.id === id) {
-      joke.fave = !joke.fave
+      if(!joke.fave) {
+        joke.fave = !joke.fave
+        console.log(joke)
+        this.addToFaves(joke)
+      } else {
+        joke.fave = !joke.fave
+        console.log(joke)
+        this.removeFromFaves(joke.id)
+      }
     }
     return joke
   })
   this.setState({ jokes: updatedJokes })
 }
-
-  // showFaves(faveStatus) {
-  //   this.setState({ showFaves: faveStatus })
-  // }
 
   updateName(name) {
     this.setState({ firstName: name.split(' ')[0], lastName: name.split(' ')[1] })
@@ -76,13 +79,12 @@ export default class App extends Component {
 
     const Children = React.cloneElement(this.props.children, {
       getJokes: this.fetchJokes.bind(this),
-      num: this.setNum,
-      jokes: this.state.showFaves ? this.filterFaves() : this.state.jokes,
-      addToFaves: this.addToFaves.bind(this),
       updateFave: this.updateJoke.bind(this),
+      addToFaves: this.addToFaves.bind(this),
       removeFromFaves: this.removeFromFaves.bind(this),
-      favorites: this.state.favorites,
       updateName: this.updateName.bind(this),
+      jokes: this.state.showFaves ? this.filterFaves() : this.state.jokes,
+      favorites: this.state.favorites,
       currentName: `${this.state.firstName} ${this.state.lastName}`
     })
 
