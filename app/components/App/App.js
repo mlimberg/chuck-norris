@@ -23,7 +23,7 @@ export default class App extends Component {
   }
 
   fetchJokes(num) {
-    fetch(`http://api.icndb.com/jokes/random/${num}?escape=javascript`).then((response) => {
+    fetch(`http://api.icndb.com/jokes/random/${num}?escape=javascript&firstName=${this.state.firstName}&lastName=${this.state.lastName}`).then((response) => {
       return response.json()
     }).then((data) => {
       let updatedData = data.value.map(obj => Object.assign(obj, { fave: false }))
