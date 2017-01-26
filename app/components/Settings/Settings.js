@@ -24,8 +24,18 @@ export default class Settings extends Component {
           <Button className='button'
                   id='set-name-btn'
                   text='SET'
-                  handleClick={() => this.props.updateName(this.state.name)}/>
-          <Button className='button' id='reset-name-btn' text='RESET'/>
+                  disabled={!this.state.name}
+                  handleClick={() => {
+                    this.props.updateName(this.state.name);
+                    this.setState({ name: '' })
+                  }}/>
+          <Button className='button'
+                  id='reset-name-btn'
+                  text='RESET'
+                  handleClick={() => this.props.updateName('Chuck Norris')}/>
+        </div>
+        <div id='current-name'>
+          Current Name: {this.props.currentName}
         </div>
         <div id='parental-controls'>
           <p>Parental Controls: </p>

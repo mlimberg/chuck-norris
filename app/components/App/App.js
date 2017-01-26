@@ -9,8 +9,8 @@ export default class App extends Component {
       featureJoke: '',
       jokes: [],
       showFaves: false,
-      firstName: '',
-      lastName: ''
+      firstName: 'Chuck',
+      lastName: 'Norris'
     }
   }
 
@@ -65,7 +65,8 @@ export default class App extends Component {
       jokes: this.state.showFaves ? this.filterFaves() : this.state.jokes,
       updateFave: this.updateJoke.bind(this),
       showFaves: this.showFaves.bind(this),
-      updateName: this.updateName.bind(this)
+      updateName: this.updateName.bind(this),
+      currentName: `${this.state.firstName} ${this.state.lastName}`
     })
 
     return (
