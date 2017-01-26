@@ -1,8 +1,19 @@
+$joke-card-background: rgba(0,0,0,0.2);
+
 .joke-card {
   min-width: 280px;
-  background-color: rgba(0,0,0,0.2);
+  background-color: $joke-card-background;
   color: white;
   font-family: sans-serif;
   padding: 10px;
   margin: 5px;
+}
+
+#fave-btn {
+  background-color: $joke-card-background;
+  font-size: 20px;
+  color: white;
+  &:hover {
+    color: #fde82b;
+  }
 }

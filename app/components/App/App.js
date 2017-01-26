@@ -8,6 +8,7 @@ export default class App extends Component {
     this.state = {
       featureJoke: '',
       jokes: [],
+      showFaves: false
     }
   }
 
@@ -23,9 +24,30 @@ export default class App extends Component {
     fetch(`http://api.icndb.com/jokes/random/${num}?escape=javascript`).then((response) => {
       return response.json()
     }).then((data) => {
-      return data.value.map(obj => obj.joke)
-    }).then(array => {
-      this.setState({ jokes: array })
+      let updatedData = data.value.map(obj => Object.assign(obj, { fave: false }))
+      this.setState({ jokes: updatedData })
+    })
+  }
+
+  updateJoke(id) {
+    let updatedJokes = this.state.jokes.map(joke => {
+      if(joke.id === id) {
+        joke.fave = !joke.fave
+      }
+      return joke
+    })
+    this.setState({ jokes: updatedJokes })
+  }
+
+  showFaves(faveStatus) {
+    this.setState({ showFaves: faveStatus })
+  }
+
+  filterFaves() {
+    return this.state.jokes.filter(joke => {
+      if(joke.fave) {
+        return joke
+      }
     })
   }
 
@@ -34,7 +56,9 @@ export default class App extends Component {
     const Children = React.cloneElement(this.props.children, {
       getJokes: this.fetchJokes.bind(this),
       num: this.setNum,
-      jokes: this.state.jokes
+      jokes: this.state.showFaves ? this.filterFaves() : this.state.jokes,
+      updateFave: this.updateJoke.bind(this),
+      showFaves: this.showFaves.bind(this)
     })
 
     return (

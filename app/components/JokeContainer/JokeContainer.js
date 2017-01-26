@@ -15,7 +15,14 @@ export default class JokeContainer extends Component {
 
   render() {
     let welcomeMessage = (<div id='welcome-msg'>Click Get Jokes!</div>)
-    let jokes = this.props.jokes.length > 0 ? this.props.jokes.map((joke, i) => <JokeCard key={i} joke={joke} />) : welcomeMessage
+
+    let jokes = this.props.jokes.length > 0 ? this.props.jokes.map((e, i) => {
+      return (
+        <div id='joke-card-container' key={i}>
+          <JokeCard id={e.id} joke={e.joke} updateFave={this.props.updateFave}/>
+        </div>
+      )
+    }) : welcomeMessage
 
     return (
       <div>
@@ -29,17 +36,20 @@ export default class JokeContainer extends Component {
                       this.setState({ num: '' })
                     }}/>
             <Input id='joke-num-input'
-                   type='numberg'
+                   type='number'
                    value={this.state.num}
                    handleChange={(e) => this.setState({ num: e.target.value })}/>
           </div>
             <Button id='faves-btn'
-                    text='Favorites'
-                    disabled={!this.state.showFaves}/>
+                    text={this.state.showFaves ? 'All' : 'Favorites'}
+                    // disabled={this.state.showFaves}
+                    handleClick={() => {
+                      this.setState({ showFaves: !this.state.showFaves }, () => {
+                        this.props.showFaves(this.state.showFaves)
+                      })
+                    }}/>
         </div>
-        <div id='joke-card-container'>
           {jokes}
-        </div>
       </div>
     )
   }
