@@ -46,3 +46,8 @@ export default class Settings extends Component {
     )
   }
 }
+
+Settings.propTypes = {
+  updateName: React.PropTypes.func,
+  currentName: React.PropTypes.string,
+}

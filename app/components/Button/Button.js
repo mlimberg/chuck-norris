@@ -13,7 +13,7 @@ const Button = (props) => {
 }
 
 Button.propTypes = {
-  // id: React.PropTypes.number && React.PropTypes.string,
+  id: React.PropTypes.string,
   disabled: React.PropTypes.bool,
   handleClick: React.PropTypes.func
 }

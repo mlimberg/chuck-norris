@@ -5,7 +5,7 @@ import JokeCard from '../JokeCard/JokeCard';
 
 const Favorites = (props) => {
   let NoFavesMessage = (<div id='no-faves-msg'>No Flava Faves Yet!</div>);
-  let { favorites, removeFromFaves, updateFave, addToFaves, getJokes } = props;
+  let { favorites, updateFave, getJokes } = props;
   let faves = favorites.length > 0 ? favorites.map((e, i) => {
     return (
       <div id='joke-card-container' key={i}>
@@ -27,7 +27,9 @@ const Favorites = (props) => {
 }
 
 Favorites.propTypes = {
-
+  favorites: React.PropTypes.array,
+  updateFave: React.PropTypes.func,
+  getJokes: React.PropTypes.func,
 }
 
 export default Favorites;
