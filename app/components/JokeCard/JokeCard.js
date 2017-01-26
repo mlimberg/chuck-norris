@@ -15,7 +15,9 @@ const JokeCard = (props) => {
 }
 
 JokeCard.propTypes = {
-  joke: React.PropTypes.string
+  joke: React.PropTypes.string,
+  fave: React.PropTypes.bool,
+  id: React.PropTypes.number
 }
 
 export default JokeCard;
