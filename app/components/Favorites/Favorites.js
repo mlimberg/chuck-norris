@@ -17,7 +17,7 @@ const Favorites = (props) => {
       </div>
     )
   }) : NoFavesMessage
-
+  console.log(props.location.pathname)
   return (
     <div>
       <Home favorites={favorites} getJokes={getJokes} all={props}/>

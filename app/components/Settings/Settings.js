@@ -1,4 +1,5 @@
 import './setting-style.scss';
+import './slider-style';
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import Button from '../Button/Button';
@@ -8,7 +9,8 @@ export default class Settings extends Component {
   constructor() {
     super();
     this.state = {
-      name: ''
+      name: '',
+      pControls: false
     }
   }
 
@@ -39,8 +41,12 @@ export default class Settings extends Component {
         </div>
         <div id='parental-controls'>
           <p>Parental Controls: </p>
-          <Input type='radio'/>
-          <Input type='radio'/>
+          <label className="switch">
+            <input type="checkbox" onClick={() => this.setState({ pControls: !this.state.pControls }, () => {
+              this.props.updatePControls(this.state.pControls)
+            })}/>
+            <div className="slider round"></div>
+          </label>
         </div>
       </div>
     )
