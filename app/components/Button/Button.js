@@ -4,7 +4,7 @@ import './button-style';
 const Button = (props) => {
   return (
     <button id={props.id}
-            className='button'
+            className={props.className}
             disabled={props.disabled}
             onClick={() => props.handleClick()}>
       {props.text}
@@ -13,7 +13,7 @@ const Button = (props) => {
 }
 
 Button.propTypes = {
-  id: React.PropTypes.string,
+  // id: React.PropTypes.number && React.PropTypes.string,
   disabled: React.PropTypes.bool,
   handleClick: React.PropTypes.func
 }

@@ -3,10 +3,13 @@ import React from 'react';
 import Button from '../Button/Button';
 
 const JokeCard = (props) => {
+
   return (
-    <div className='joke-card' id={props.id}>
+    <div className='joke-card'>
       {props.joke}
-      <Button id='fave-btn' text='★' handleClick={() => props.updateFave(props.id)} />
+        <Button className={`fave-btn ${props.fave ? 'favorite' : ''}`}
+                id={props.id} text='★'
+                handleClick={() => {props.updateFave(props.id)}} />
     </div>
   )
 }

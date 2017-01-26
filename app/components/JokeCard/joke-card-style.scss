@@ -1,19 +1,24 @@
-$joke-card-background: rgba(0,0,0,0.2);
-
 .joke-card {
   min-width: 280px;
-  background-color: $joke-card-background;
+  background-color: rgba(0,0,0,0.2);
   color: white;
   font-family: sans-serif;
   padding: 10px;
   margin: 5px;
 }
 
-#fave-btn {
-  background-color: $joke-card-background;
+.fave-btn {
+  border: none;
+  background-color: rgba(0,0,0,0);
   font-size: 20px;
   color: white;
+  outline: none;
   &:hover {
+    cursor: pointer;
     color: #fde82b;
   }
+}
+
+.favorite {
+  color: #fde82b;
 }
