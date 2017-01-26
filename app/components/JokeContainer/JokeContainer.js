@@ -1,7 +1,6 @@
 import './joke-container-style';
 import React, { Component } from 'react';
 import JokeCard from '../JokeCard/JokeCard';
-import Button from '../Button/Button';
 import Input from '../Input/Input';
 import Home from '../Home/Home'
 

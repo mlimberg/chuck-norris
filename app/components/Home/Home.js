@@ -14,7 +14,6 @@ export default class Home extends Component {
   }
 
   render() {
-    console.log(this.props.all.location.pathname)
     return (
       <div id='joke-controls'>
         <div id='new-joke-generator'>
