@@ -21,8 +21,11 @@ export default class Settings extends Component {
                  value={this.state.name}
                  handleChange={(e) => {this.setState({ name: e.target.value })}}
                 />
-          <Button id='set-name-btn' text='SET'/>
-          <Button id='reset-name-btn' text='RESET'/>
+          <Button className='button'
+                  id='set-name-btn'
+                  text='SET'
+                  handleClick={() => this.props.updateName(this.state.name)}/>
+          <Button className='button' id='reset-name-btn' text='RESET'/>
         </div>
         <div id='parental-controls'>
           <p>Parental Controls: </p>

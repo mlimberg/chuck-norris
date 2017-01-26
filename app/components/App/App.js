@@ -8,7 +8,9 @@ export default class App extends Component {
     this.state = {
       featureJoke: '',
       jokes: [],
-      showFaves: false
+      showFaves: false,
+      firstName: '',
+      lastName: ''
     }
   }
 
@@ -43,6 +45,10 @@ export default class App extends Component {
     this.setState({ showFaves: faveStatus })
   }
 
+  updateName(name) {
+    this.setState({ firstName: name.split(' ')[0], lastName: name.split(' ')[1] })
+  }
+
   filterFaves() {
     return this.state.jokes.filter(joke => {
       if(joke.fave) {
@@ -58,7 +64,8 @@ export default class App extends Component {
       num: this.setNum,
       jokes: this.state.showFaves ? this.filterFaves() : this.state.jokes,
       updateFave: this.updateJoke.bind(this),
-      showFaves: this.showFaves.bind(this)
+      showFaves: this.showFaves.bind(this),
+      updateName: this.updateName.bind(this)
     })
 
     return (
