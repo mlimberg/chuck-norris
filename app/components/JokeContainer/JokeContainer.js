@@ -20,10 +20,10 @@ const JokeContainer = (props) => {
       </div>
     )
   }) : welcomeMessage
-  
+
   return (
     <div>
-      <Home getJokes={props.getJokes}/>
+      <Home getJokes={props.getJokes} all={props}/>
       {jokes}
     </div>
   );
