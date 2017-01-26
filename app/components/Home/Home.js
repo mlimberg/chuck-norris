@@ -41,11 +41,15 @@ export default class Home extends Component {
             <button id='faves-btn'
                     className='button'
                     onClick={() => this.setState({ showFaves: !this.state.showFaves })}>
-              {this.props.all.location.pathname === '/jokes' ? 'Favorites' : 'Jokes'}
+              {this.props.all.location.pathname === '/jokes' ? 'Favorites' : 'All Jokes'}
             </button>
           </Link>
         </div>
       </div>
     )
   }
+}
+
+Home.propTypes = {
+  getJokes: React.PropTypes.func
 }

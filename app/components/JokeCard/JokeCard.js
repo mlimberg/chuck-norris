@@ -8,7 +8,7 @@ const JokeCard = (props) => {
     <div className='joke-card'>
       {props.joke}
         <Button className={`fave-btn ${props.fave ? 'favorite' : ''}`}
-                id={props.id} text='★'
+                text='★'
                 handleClick={() => {
                   props.updateFave(props.id)
                 }} />
@@ -19,7 +19,7 @@ const JokeCard = (props) => {
 JokeCard.propTypes = {
   joke: React.PropTypes.string,
   fave: React.PropTypes.bool,
-  id: React.PropTypes.number
+  updateFave: React.PropTypes.func
 }
 
 export default JokeCard;

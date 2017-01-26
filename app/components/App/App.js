@@ -50,11 +50,9 @@ export default class App extends Component {
     if(joke.id === id) {
       if(!joke.fave) {
         joke.fave = !joke.fave
-        console.log(joke)
         this.addToFaves(joke)
       } else {
         joke.fave = !joke.fave
-        console.log(joke)
         this.removeFromFaves(joke.id)
       }
     }
@@ -85,7 +83,8 @@ export default class App extends Component {
       updateName: this.updateName.bind(this),
       jokes: this.state.showFaves ? this.filterFaves() : this.state.jokes,
       favorites: this.state.favorites,
-      currentName: `${this.state.firstName} ${this.state.lastName}`
+      currentName: `${this.state.firstName} ${this.state.lastName}`,
+      // all: this.props - Need this if I don't do the IndexRedirect in router
     })
 
     return (
