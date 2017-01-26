@@ -6,6 +6,8 @@ import JokeContainer from './components/JokeContainer/JokeContainer';
 import App from './components/App/App';
 import Settings from './components/Settings/Settings';
 import Header from './components/Header/Header';
+import Favorites from './components/Favorites/Favorites';
+
 
 const router = (
   <Router history={browserHistory}>
@@ -13,6 +15,7 @@ const router = (
       <IndexRedirect to='/jokes' />
       <Route path='jokes'  component={JokeContainer} />
       <Route path='/settings' component={Settings} />
+      <Route path='/favorites' component={Favorites} />
     </Route>
   </Router>
 )

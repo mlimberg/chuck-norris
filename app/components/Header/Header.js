@@ -18,7 +18,7 @@ export default class Header extends Component {
 
         <h1 id='main-h1'>CHUCK NORRIS JOKE MACHINE</h1>
 
-        <Link to={this.state.settings? '/jokes' : '/settings'}>
+        <Link to={this.state.settings ? '/jokes' : '/settings'}>
           <Button className='button'
                   id='settings-btn'
                   text={this.state.settings ? 'Jokes' : 'Settings'}

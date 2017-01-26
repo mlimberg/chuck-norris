@@ -56,9 +56,9 @@ export default class App extends Component {
   this.setState({ jokes: updatedJokes })
 }
 
-  showFaves(faveStatus) {
-    this.setState({ showFaves: faveStatus })
-  }
+  // showFaves(faveStatus) {
+  //   this.setState({ showFaves: faveStatus })
+  // }
 
   updateName(name) {
     this.setState({ firstName: name.split(' ')[0], lastName: name.split(' ')[1] })
@@ -81,7 +81,7 @@ export default class App extends Component {
       addToFaves: this.addToFaves.bind(this),
       updateFave: this.updateJoke.bind(this),
       removeFromFaves: this.removeFromFaves.bind(this),
-      showFaves: this.showFaves.bind(this),
+      favorites: this.state.favorites,
       updateName: this.updateName.bind(this),
       currentName: `${this.state.firstName} ${this.state.lastName}`
     })
