@@ -19,7 +19,7 @@ export default class JokeContainer extends Component {
     let jokes = this.props.jokes.length > 0 ? this.props.jokes.map((e, i) => {
       return (
         <div id='joke-card-container' key={i}>
-          <JokeCard id={e.id} joke={e.joke} updateFave={this.props.updateFave}/>
+          <JokeCard id={e.id} joke={e.joke} fave={e.fave} updateFave={this.props.updateFave}/>
         </div>
       )
     }) : welcomeMessage
@@ -29,7 +29,8 @@ export default class JokeContainer extends Component {
         <div id='joke-controls'>
           <div id='new-joke-generator'>
             <Button id='new-joke-btn'
-                    text='New Jokes'
+                    className='button'
+                    text='Get Jokes'
                     disabled={!this.state.num}
                     handleClick={() => {
                       this.props.getJokes(this.state.num);
@@ -41,6 +42,7 @@ export default class JokeContainer extends Component {
                    handleChange={(e) => this.setState({ num: e.target.value })}/>
           </div>
             <Button id='faves-btn'
+                    className='button'
                     text={this.state.showFaves ? 'All' : 'Favorites'}
                     // disabled={this.state.showFaves}
                     handleClick={() => {
