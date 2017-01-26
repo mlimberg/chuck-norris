@@ -10,7 +10,8 @@ export default class App extends Component {
       jokes: [],
       favorites: [],
       firstName: 'Chuck',
-      lastName: 'Norris'
+      lastName: 'Norris',
+      pControls: false
     }
   }
 
@@ -23,6 +24,8 @@ export default class App extends Component {
   }
 
   fetchJokes(num) {
+    let pControls = this.state.pControls ? '&exclude=[explicit]' : ''
+
     fetch(`http://api.icndb.com/jokes/random/${num}?escape=javascript&firstName=${this.state.firstName}&lastName=${this.state.lastName}`).then((response) => {
       return response.json()
     }).then((data) => {
@@ -59,7 +62,11 @@ export default class App extends Component {
     return joke
   })
   this.setState({ jokes: updatedJokes })
-}
+  }
+
+  updatePControls(e) {
+    this.setState({ pControls: e })
+  }
 
   updateName(name) {
     this.setState({ firstName: name.split(' ')[0], lastName: name.split(' ')[1] })
@@ -84,6 +91,7 @@ export default class App extends Component {
       jokes: this.state.showFaves ? this.filterFaves() : this.state.jokes,
       favorites: this.state.favorites,
       currentName: `${this.state.firstName} ${this.state.lastName}`,
+      updatePControls: this.updatePControls.bind(this)
       // all: this.props - Need this if I don't do the IndexRedirect in router
     })
 
