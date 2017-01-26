@@ -3,64 +3,30 @@ import React, { Component } from 'react';
 import JokeCard from '../JokeCard/JokeCard';
 import Button from '../Button/Button';
 import Input from '../Input/Input';
-import { Link } from 'react-router';
+import Home from '../Home/Home'
 
-export default class JokeContainer extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      num: '',
-      showFaves: false
-    }
-  }
+const JokeContainer = (props) => {
+  let welcomeMessage = (<div id='welcome-msg'>Click Get Jokes!</div>)
 
-  render() {
-    let welcomeMessage = (<div id='welcome-msg'>Click Get Jokes!</div>)
-
-    let jokes = this.props.jokes.length > 0 ? this.props.jokes.map((e, i) => {
-      return (
-        <div id='joke-card-container' key={i}>
-          <JokeCard id={e.id}
-                    joke={e.joke}
-                    fave={e.fave}
-                    addToFaves={this.props.addToFaves}
-                    updateFave={this.props.updateFave}
-                    removeFromFaves={this.props.removeFromFaves}/>
-        </div>
-      )
-    }) : welcomeMessage
-
+  let jokes = props.jokes.length > 0 ? props.jokes.map((e, i) => {
     return (
-      <div>
-        <div id='joke-controls'>
-          <div id='new-joke-generator'>
-            <Button id='new-joke-btn'
-                    className='button'
-                    text='Get Jokes'
-                    disabled={!this.state.num}
-                    handleClick={() => {
-                      this.props.getJokes(this.state.num);
-                      this.setState({ num: '' })
-                    }}/>
-            <Input id='joke-num-input'
-                   type='number'
-                   value={this.state.num}
-                   handleChange={(e) => this.setState({ num: e.target.value })}/>
-          </div>
-            <Link to='/favorites'>
-              <Button id='faves-btn'
-                className='button'
-                text={this.state.showFaves ? 'All' : 'Favorites'}
-                // disabled={this.state.showFaves}
-                handleClick={() => {
-                  this.setState({ showFaves: !this.state.showFaves }, () => {
-                    this.props.showFaves(this.state.showFaves)
-                  })
-                }}/>
-            </Link>
-        </div>
-          {jokes}
+      <div id='joke-card-container' key={i}>
+        <JokeCard id={e.id}
+                  joke={e.joke}
+                  fave={e.fave}
+                  addToFaves={props.addToFaves}
+                  updateFave={props.updateFave}
+                  removeFromFaves={props.removeFromFaves}/>
       </div>
     )
-  }
+  }) : welcomeMessage
+  
+  return (
+    <div>
+      <Home getJokes={props.getJokes}/>
+      {jokes}
+    </div>
+  );
 }
+
+export default JokeContainer;
