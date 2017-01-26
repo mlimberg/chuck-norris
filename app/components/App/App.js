@@ -8,6 +8,7 @@ export default class App extends Component {
     this.state = {
       featureJoke: '',
       jokes: [],
+      favorites: [],
       showFaves: false,
       firstName: 'Chuck',
       lastName: 'Norris'
@@ -31,15 +32,29 @@ export default class App extends Component {
     })
   }
 
-  updateJoke(id) {
-    let updatedJokes = this.state.jokes.map(joke => {
-      if(joke.id === id) {
-        joke.fave = !joke.fave
-      }
-      return joke
-    })
-    this.setState({ jokes: updatedJokes })
+  addToFaves(joke) {
+    let newArray = this.state.favorites.slice()
+    newArray.push(joke)
+    this.setState({ favorites: newArray })
   }
+
+  removeFromFaves(id) {
+    let copy = this.state.favorites.slice()
+    let newArray = copy.filter(joke => {
+      return joke.id !== id
+    })
+    this.setState({ favorites: newArray })
+  }
+
+  updateJoke(id) {
+  let updatedJokes = this.state.jokes.map(joke => {
+    if(joke.id === id) {
+      joke.fave = !joke.fave
+    }
+    return joke
+  })
+  this.setState({ jokes: updatedJokes })
+}
 
   showFaves(faveStatus) {
     this.setState({ showFaves: faveStatus })
@@ -63,7 +78,9 @@ export default class App extends Component {
       getJokes: this.fetchJokes.bind(this),
       num: this.setNum,
       jokes: this.state.showFaves ? this.filterFaves() : this.state.jokes,
+      addToFaves: this.addToFaves.bind(this),
       updateFave: this.updateJoke.bind(this),
+      removeFromFaves: this.removeFromFaves.bind(this),
       showFaves: this.showFaves.bind(this),
       updateName: this.updateName.bind(this),
       currentName: `${this.state.firstName} ${this.state.lastName}`

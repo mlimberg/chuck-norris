@@ -9,7 +9,14 @@ const JokeCard = (props) => {
       {props.joke}
         <Button className={`fave-btn ${props.fave ? 'favorite' : ''}`}
                 id={props.id} text='★'
-                handleClick={() => {props.updateFave(props.id)}} />
+                handleClick={() => {
+                  props.updateFave(props.id)
+                  if(!props.fave) { 
+                    props.addToFaves(props)
+                  } else {
+                    props.removeFromFaves(props.id)
+                  }
+                }} />
     </div>
   )
 }
