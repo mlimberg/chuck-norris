@@ -13,7 +13,7 @@ const Input = (props) => {
 
 Input.propTypes = {
   id: React.PropTypes.string,
-  value: React.PropTypes.string,
+  // value: React.PropTypes.string,
   type: React.PropTypes.string,
   onChange: React.PropTypes.func
 }
