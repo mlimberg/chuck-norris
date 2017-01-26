@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import JokeCard from '../JokeCard/JokeCard';
 import Button from '../Button/Button';
 import Input from '../Input/Input';
+import { Link } from 'react-router';
 
 export default class JokeContainer extends Component {
   constructor(props) {
@@ -19,7 +20,12 @@ export default class JokeContainer extends Component {
     let jokes = this.props.jokes.length > 0 ? this.props.jokes.map((e, i) => {
       return (
         <div id='joke-card-container' key={i}>
-          <JokeCard id={e.id} joke={e.joke} fave={e.fave} updateFave={this.props.updateFave}/>
+          <JokeCard id={e.id}
+                    joke={e.joke}
+                    fave={e.fave}
+                    addToFaves={this.props.addToFaves}
+                    updateFave={this.props.updateFave}
+                    removeFromFaves={this.props.removeFromFaves}/>
         </div>
       )
     }) : welcomeMessage
@@ -41,15 +47,17 @@ export default class JokeContainer extends Component {
                    value={this.state.num}
                    handleChange={(e) => this.setState({ num: e.target.value })}/>
           </div>
-            <Button id='faves-btn'
-                    className='button'
-                    text={this.state.showFaves ? 'All' : 'Favorites'}
-                    // disabled={this.state.showFaves}
-                    handleClick={() => {
-                      this.setState({ showFaves: !this.state.showFaves }, () => {
-                        this.props.showFaves(this.state.showFaves)
-                      })
-                    }}/>
+            <Link to='/favorites'>
+              <Button id='faves-btn'
+                className='button'
+                text={this.state.showFaves ? 'All' : 'Favorites'}
+                // disabled={this.state.showFaves}
+                handleClick={() => {
+                  this.setState({ showFaves: !this.state.showFaves }, () => {
+                    this.props.showFaves(this.state.showFaves)
+                  })
+                }}/>
+            </Link>
         </div>
           {jokes}
       </div>
