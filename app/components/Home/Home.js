@@ -32,6 +32,7 @@ export default class Home extends Component {
           <Input id='joke-num-input'
                  type='number'
                  value={this.state.num}
+                 placeholder='5'
                  handleChange={(e) => this.setState({ num: e.target.value })}
                />
         </div>

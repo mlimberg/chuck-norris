@@ -7,6 +7,7 @@ const Input = (props) => {
            className='input'
            value={props.value}
            type={props.type}
+           placeholder={props.placeholder}
            onChange={(e) => props.handleChange(e)} />
   )
 }
