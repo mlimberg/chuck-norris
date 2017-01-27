@@ -42,9 +42,12 @@ export default class Settings extends Component {
         <div id='parental-controls'>
           <p>Parental Controls: </p>
           <label className="switch">
-            <input type="checkbox" onClick={() => this.setState({ pControls: !this.state.pControls }, () => {
-              this.props.updatePControls(this.state.pControls)
-            })}/>
+            <input type="checkbox"
+                   checked={this.props.pControlStatus}
+                   onClick={(e) => {
+                     this.setState({ pControls: !this.state.pControls }, () => {
+                       this.props.updatePControls(this.state.pControls)
+                   })}}/>
             <div className="slider round"></div>
           </label>
         </div>

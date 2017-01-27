@@ -37,11 +37,11 @@ export default class Home extends Component {
         </div>
 
         <div>
-          <Link to={this.props.all.location.pathname === '/jokes' ? '/favorites' : '/jokes'}>
+          <Link to={this.props.location.pathname === '/jokes' ? '/favorites' : '/jokes'}>
             <button id='faves-btn'
                     className='button'
                     onClick={() => this.setState({ showFaves: !this.state.showFaves })}>
-              {this.props.all.location.pathname === '/jokes' ? 'Favorites' : 'All Jokes'}
+              {this.props.location.pathname === '/jokes' ? 'Favorites' : 'All Jokes'}
             </button>
           </Link>
         </div>

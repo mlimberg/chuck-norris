@@ -24,7 +24,7 @@ export default class App extends Component {
   }
 
   fetchJokes(num) {
-    let pControls = this.state.pControls ? '&exclude=[explicit]' : ''
+    let pControls = this.state.pControls ? '&limitTo=[explicit]' : ''
 
     fetch(`http://api.icndb.com/jokes/random/${num}?escape=javascript&firstName=${this.state.firstName}&lastName=${this.state.lastName}`).then((response) => {
       return response.json()
@@ -35,15 +35,14 @@ export default class App extends Component {
   }
 
   addToFaves(joke) {
-    let newArray = this.state.favorites.slice()
-    newArray.push(joke)
-    this.setState({ favorites: newArray })
+    let updatedArray = this.state.favorites.slice()
+    updatedArray.push(joke)
+    this.setState({ favorites: updatedArray })
   }
 
-  removeFromFaves(id) {
-    let copy = this.state.favorites.slice()
-    let newArray = copy.filter(joke => {
-      return joke.id !== id
+  removeFromFaves(joke) {
+    let newArray = this.state.favorites.filter(item => {
+      return item.id !== joke.id
     })
     this.setState({ favorites: newArray })
   }
@@ -51,13 +50,8 @@ export default class App extends Component {
   updateJoke(id) {
   let updatedJokes = this.state.jokes.map(joke => {
     if(joke.id === id) {
-      if(!joke.fave) {
-        joke.fave = !joke.fave
-        this.addToFaves(joke)
-      } else {
-        joke.fave = !joke.fave
-        this.removeFromFaves(joke.id)
-      }
+      joke.fave = !joke.fave
+      joke.fave ? this.addToFaves(joke) : this.removeFromFaves(joke)
     }
     return joke
   })
@@ -72,14 +66,6 @@ export default class App extends Component {
     this.setState({ firstName: name.split(' ')[0], lastName: name.split(' ')[1] })
   }
 
-  filterFaves() {
-    return this.state.jokes.filter(joke => {
-      if(joke.fave) {
-        return joke
-      }
-    })
-  }
-
   render() {
 
     const Children = React.cloneElement(this.props.children, {
@@ -88,11 +74,11 @@ export default class App extends Component {
       addToFaves: this.addToFaves.bind(this),
       removeFromFaves: this.removeFromFaves.bind(this),
       updateName: this.updateName.bind(this),
-      jokes: this.state.showFaves ? this.filterFaves() : this.state.jokes,
+      jokes: this.state.jokes,
       favorites: this.state.favorites,
       currentName: `${this.state.firstName} ${this.state.lastName}`,
-      updatePControls: this.updatePControls.bind(this)
-      // all: this.props - Need this if I don't do the IndexRedirect in router
+      updatePControls: this.updatePControls.bind(this),
+      pControlStatus: this.state.pControls
     })
 
     return (

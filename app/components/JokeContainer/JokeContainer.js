@@ -22,7 +22,7 @@ const JokeContainer = (props) => {
 
   return (
     <div>
-      <Home getJokes={getJokes} all={props}/>
+      <Home {...props}/>
       {allJokes}
     </div>
   );
