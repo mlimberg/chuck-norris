@@ -2,7 +2,6 @@
   background-color: rgba(0,0,0,0.2);
   width: 100%;
   color: white;
-  padding: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -37,4 +36,21 @@
 #name-set-input {
   font-size: 16px;
   border-radius: 5px;
+}
+
+@media (max-width: 550px ) {
+  #name-set-controls {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  #name-set-input {
+    width: 65%;
+  }
+
+  #name-set-btn, #name-reset-btn {
+    width: 100px;
+  }
+
 }

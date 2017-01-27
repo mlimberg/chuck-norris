@@ -34,3 +34,10 @@
 .favorite {
   color: #fde82b;
 }
+
+@media (max-width: 550px ) {
+  .joke-card {
+    min-width: 80%;
+  }
+
+}
