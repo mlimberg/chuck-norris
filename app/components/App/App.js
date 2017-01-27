@@ -24,7 +24,7 @@ export default class App extends Component {
   }
 
   fetchJokes(num) {
-    let pControls = this.state.pControls ? '&limitTo=[explicit]' : ''
+    let pControls = this.state.pControls ? '&exclude=[explicit]' : ''
 
     fetch(`http://api.icndb.com/jokes/random/${num}?escape=javascript&firstName=${this.state.firstName}&lastName=${this.state.lastName}`).then((response) => {
       return response.json()
