@@ -51,4 +51,7 @@ a:hover, a:visited, a:link, a:active {
   font-size: 22px;
   text-align: center;
   margin-bottom: 5px;
+  &:focus::-webkit-input-placeholder {
+    color: transparent;
+  }
 }
