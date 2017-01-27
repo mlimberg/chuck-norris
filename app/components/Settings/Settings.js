@@ -18,13 +18,13 @@ export default class Settings extends Component {
     return (
       <div id='settings-container'>
         <div id='name-set-controls'>
-          <p>Set Name:</p>
+          <p id='name-set-text'>Set Name:</p>
           <Input id='name-set-input'
                  value={this.state.name}
                  handleChange={(e) => {this.setState({ name: e.target.value })}}
                 />
           <Button className='button'
-                  id='set-name-btn'
+                  id='name-set-btn'
                   text='SET'
                   disabled={!this.state.name}
                   handleClick={() => {
@@ -32,19 +32,22 @@ export default class Settings extends Component {
                     this.setState({ name: '' })
                   }}/>
           <Button className='button'
-                  id='reset-name-btn'
+                  id='name-reset-btn'
                   text='RESET'
                   handleClick={() => this.props.updateName('Chuck Norris')}/>
         </div>
-        <div id='current-name'>
-          Current Name: {this.props.currentName}
+        <div id='current-name-section'>
+          Current Name: <span id='current-name'>{this.props.currentName}</span>
         </div>
         <div id='parental-controls'>
-          <p>Parental Controls: </p>
+          <p id='parental-ctrls-text'>Parental Controls: </p>
           <label className="switch">
-            <input type="checkbox" onClick={() => this.setState({ pControls: !this.state.pControls }, () => {
-              this.props.updatePControls(this.state.pControls)
-            })}/>
+            <input type="checkbox"
+                   checked={this.props.pControlStatus}
+                   onClick={(e) => {
+                     this.setState({ pControls: !this.state.pControls }, () => {
+                       this.props.updatePControls(this.state.pControls)
+                   })}}/>
             <div className="slider round"></div>
           </label>
         </div>

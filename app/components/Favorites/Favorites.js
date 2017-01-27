@@ -1,27 +1,27 @@
-import './favorites-style';
+import '../JokeCard/joke-card-style';
+import './favorites-style'
 import React from 'react';
 import Home from '../Home/Home';
 import JokeCard from '../JokeCard/JokeCard';
 
 const Favorites = (props) => {
-  let NoFavesMessage = (<div id='no-faves-msg'>No Flava Faves Yet!</div>);
+  let NoFavesMessage = (<div id='no-faves-msg'>No Flava Faves</div>);
   let { favorites, updateFave, getJokes } = props;
   let faves = favorites.length > 0 ? favorites.map((e, i) => {
     return (
-      <div id='joke-card-container' key={i}>
         <JokeCard id={e.id}
                   joke={e.joke}
                   fave={e.fave}
                   updateFave={updateFave}
                 />
-      </div>
     )
   }) : NoFavesMessage
-  console.log(props.location.pathname)
   return (
     <div>
-      <Home favorites={favorites} getJokes={getJokes} all={props}/>
+      <Home {...props}/>
+      <div id='jokes-container'>
       {faves}
+      </div>
     </div>
   );
 }

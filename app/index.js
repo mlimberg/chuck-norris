@@ -13,7 +13,7 @@ import Home from './components/Home/Home';
 const router = (
   <Router history={browserHistory}>
     <Route path='/' component={App}>
-      <IndexRoute component={Home} />
+      {/* <IndexRoute component={Home} /> */}
       <IndexRedirect to='/jokes' /> 
       <Route path='/jokes'  component={JokeContainer} />
       <Route path='/settings' component={Settings} />

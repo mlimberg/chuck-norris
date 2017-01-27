@@ -1,5 +1,3 @@
-
-
 #settings-container {
   background-color: rgba(0,0,0,0.2);
   width: 100%;
@@ -11,7 +9,32 @@
   align-items: center;
 }
 
-#name-set-controls, #parental-controls {
+#name-set-controls, #parental-controls, #current-name-section {
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 10px auto;
+}
+
+#name-set-text, #name-set-input, #name-set-btn, #name-reset-btn {
+  margin: 2.5px;
+}
+
+#name-set-btn, #name-reset-btn {
+  width: 50px;
+}
+
+#parental-ctrls-text {
+  padding: 2.5px;
+}
+
+#current-name {
+  padding: 5px;
+  color: #fde82b;
+}
+
+#name-set-input {
+  font-size: 16px;
+  border-radius: 5px;
 }

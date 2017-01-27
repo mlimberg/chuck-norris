@@ -10,20 +10,20 @@ const JokeContainer = (props) => {
 
   let allJokes = props.jokes.length > 0 ? props.jokes.map((e, i) => {
     return (
-      <div id='joke-card-container' key={i}>
         <JokeCard id={e.id}
                   joke={e.joke}
                   fave={e.fave}
                   updateFave={updateFave}
                 />
-      </div>
     )
   }) : welcomeMessage
 
   return (
     <div>
-      <Home getJokes={getJokes} all={props}/>
-      {allJokes}
+      <Home {...props}/>
+      <div id='jokes-container'>
+        {allJokes}
+      </div>
     </div>
   );
 }
