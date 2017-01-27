@@ -83,7 +83,7 @@ export default class App extends Component {
 
     return (
       <div>
-        <Header />
+        <Header {...this.props}/>
         <FeatureJoke joke={this.state.featureJoke} />
         {Children}
       </div>
