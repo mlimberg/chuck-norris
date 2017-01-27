@@ -6,8 +6,8 @@ import Button from '../Button/Button';
 import Input from '../Input/Input';
 
 export default class Settings extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       name: '',
       pControls: false

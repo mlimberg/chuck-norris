@@ -12,6 +12,7 @@ const Favorites = (props) => {
         <JokeCard id={e.id}
                   joke={e.joke}
                   fave={e.fave}
+                  key={e.id}
                   updateFave={updateFave}
                 />
     )
