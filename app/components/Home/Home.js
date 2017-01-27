@@ -7,10 +7,7 @@ import { Link } from 'react-router';
 export default class Home extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      num: '',
-      showFaves: false
-    }
+    this.state = { num: '' }
   }
 
   render() {
@@ -39,9 +36,7 @@ export default class Home extends Component {
 
         <div>
           <Link to={this.props.location.pathname === '/jokes' ? '/favorites' : '/jokes'}>
-            <button id='faves-btn'
-                    className='button'
-                    onClick={() => this.setState({ showFaves: !this.state.showFaves })}>
+            <button id='faves-btn' className='button'>
               {this.props.location.pathname === '/jokes' ? 'Favorites' : 'All Jokes'}
             </button>
           </Link>
