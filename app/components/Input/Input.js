@@ -14,7 +14,7 @@ const Input = (props) => {
 
 Input.propTypes = {
   id: React.PropTypes.string,
-  // value: React.PropTypes.string,
+  value: React.PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.number]),
   type: React.PropTypes.string,
   onChange: React.PropTypes.func
 }

@@ -29,4 +29,9 @@ export default class Header extends Component {
     </div>
   );
   }
+
 }
+
+// Header.propTypes = {
+//   location.pathname: React.PropType.string
+// }
